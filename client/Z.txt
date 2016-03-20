@@ -1,0 +1,259 @@
+Stack Exchange sign up log in tour help  stack overflow careers  
+
+
+Stack Overflow
+Questions
+Tags
+Users
+Badges
+Unanswered
+Ask Question
+Take the 2-minute tour ◊ Stack Overflow is a question and answer site for professional and enthusiast programmers. It's 100% free, no registration required.
+Java- relative path of text file in main?
+up vote
+7
+down vote
+favorite
+2
+I was wondering how to specifiy a relative path name to a text file that is stored in my src folder of a java project. I would like to store a string with the path of this text file. For example if I had example.txt located in the src folder of my java project how would I go about finding its relative path? I am also doing this in my main so I'm having trouble using .getResource(). How would I do this? Thanks.
+
+My files path is as followed from the properties in eclipse /MyProject/src/data.txt
+
+I've tried:
+
+String path = "/MyProject/src/data.txt";
+
+But that doesn't work?
+
+java file-io relative-path
+share|improve this question
+edited Mar 7 '13 at 20:57
+
+asked Mar 7 '13 at 20:48
+
+zProgrammer
+1891210
+1	 	
+The file must be in the relative path of the java/jar file that will be executed, not of the sources. ñ  Luiggi Mendoza Mar 7 '13 at 20:50
+  	 	
+are you using Android? or pure Java? ñ  niculare Mar 7 '13 at 20:50 
+  	 	
+plain old Java. ñ  zProgrammer Mar 7 '13 at 20:52
+  	 	
+can you post your code to see what you did? ñ  Ravindra Gullapalli Mar 7 '13 at 20:52 
+add a comment
+3 Answers
+activeoldestvotes
+up vote
+8
+down vote
+accepted
+If you are using eclipse, place your text file in the root of the project folder, outside the /src and /bin folders. It should be now accessible via a relative path directly.
+
+If you want to access a file in src folder, you have to append the /src/ prefix before the file path/name
+
+share|improve this answer
+answered Mar 7 '13 at 20:53
+
+Andrei
+479314
+1	 	
+This is what I was looking for. Placing it outside the src folder worked. ñ  zProgrammer Mar 7 '13 at 21:03
+  	 	
+you are welcome ñ  Andrei Mar 8 '13 at 5:07
+add a comment
+up vote
+3
+down vote
+Use the src/ prefix before the file path/name.
+
+String path = "src/data.txt"; 
+share|improve this answer
+edited May 10 at 0:33
+
+answered May 8 at 10:25
+
+sab
+312
+add a comment
+up vote
+2
+down vote
+The path is relative to the directory you execute the "java" command.e.g.
+
+ /opt/projects/myproject>$ java -cp <whatever your classpath is that contains your class files> com.mycompany.mypackage.MyJavaClass
+in this case the MyJavaClass would find files relative to the directory
+/opt/projects/myproject
+
+There is another way to do this if you like: you can use load resources, which are found via the classpath mechanism.
+
+ getClass().getResource("foo.txt");
+You can see this posting for more info
+
+Preferred way of loading resources in Java
+
+share|improve this answer
+edited Nov 7 at 21:31
+
+answered Mar 7 '13 at 20:57
+
+javadba
+2,90121341
+  	 	
+you can't use "this" in a static method ñ  zProgrammer Mar 7 '13 at 20:58
+  	 	
+@zProgrammer I updated: just remove the "this" ñ  javadba Nov 7 at 21:31
+add a comment
+Your Answer
+
+ 
+Sign up or log in
+
+Sign up using Google
+Sign up using Facebook
+Sign up using Stack Exchange
+Post as a guest
+
+Name
+
+Email
+
+ 
+By posting your answer, you agree to the privacy policy  and terms of service .
+
+Not the answer you're looking for?	Browse other questions tagged java file-io relative-path or ask your own question.
+asked
+1 year ago
+viewed
+7796 times
+active
+1 month ago
+Blog
+   Winter Bash 2014 
+Linked
+0 how to use local project files with local paths
+0 Pictures into Jar
+0 Linking file from same project src into mediaPlayer
+Related
+27 How do relative file paths work in Eclipse?
+-1 Absolute to Relative File Path in Java
+0 Java relative path - file to file
+5 relative file paths in perl
+1 How to get to a file by passing relative path in java?
+0 Relative file reference in Java
+0 how to read text file relative path
+0 Absolute/Relative path to files in Eclipse
+0 Opening a text file using relative path with Java (in Eclipse)
+0 How I can write a file using relative path in Java
+Hot Network Questions
+Input/Output primitives of TeX  
+Error when using if statement in template  
+Did J.R.R. Tolkien ever write a deeper connection between The Hobbit & Lord of the Rings: Fellowship of the ring?  
+HashMap with MySQL  
+What exactly causes an alliance to be formed?  
+Is is safe to deal with wiring after only shutting off the room's fuse, but not the main switch?  
+How do you read these mathematical expressions aloud?  
+Why are [some] professors ambiguous about material that is actually tested on exams?  
+How would two ships travelling at light speed communicate with one another?  
+tcolorbox box width  
+Don't see the point of the Fundamental Theorem of Calculus.  
+Is there a saying or proverb for a situation where the weakest party will always lose?  
+Is there a graphical sudo (kdesudo, gksudo, su-to-root, ...) tool that works passwordless?  
+Is Moonbeam amazing, or are we doing it wrong?  
+Crack the code: Roman numerals. There is a picture of a statue with a discus and a picture of the colosseum  
+more hot questions
+question feed
+tour help blog  chat  data  legal  privacy policy  work here  advertising info  mobile contact us feedback 
+TECHNOLOGY	LIFE / ARTS	CULTURE / RECREATION	SCIENCE	OTHER
+Stack Overflow
+Server Fault
+Super User
+Web Applications
+Ask Ubuntu
+Webmasters
+Game Development
+TeX - LaTeX
+Programmers
+Unix & Linux
+Ask Different (Apple)
+WordPress Development
+Geographic Information Systems
+Electrical Engineering
+Android Enthusiasts
+Information Security
+Database Administrators
+Drupal Answers
+SharePoint
+User Experience
+Mathematica
+Salesforce
+more (13)  
+Photography
+Science Fiction & Fantasy
+Graphic Design
+Seasoned Advice (cooking)
+Home Improvement
+Personal Finance & Money
+Academia
+more (10)  
+English Language & Usage
+Skeptics
+Mi Yodeya (Judaism)
+Travel
+Christianity
+Arqade (gaming)
+Bicycles
+Role-playing Games
+more (21)  
+Mathematics
+Cross Validated (stats)
+Theoretical Computer Science
+Physics
+MathOverflow
+more (7)  
+Stack Apps
+Meta Stack Exchange
+Area 51
+Stack Overflow Careers
+site design / logo © 2014 stack exchange inc; user contributions licensed under cc by-saê—.»y¡t us feedback 
+TECHNOLOGY	LIFE / ARTS	CULTURE / RECREATION	SCIENCE	OTHER
+Stack Overflow
+Server Fault
+Super User
+Web Applications
+Ask Ubuntu
+Webmasters
+Game Development
+TeX - LaTeX
+Programmers
+Unix & Linux
+Ask Different (Apple)
+WordPress Development
+Geographic Information Systems
+Electrical Engineering
+Android Enthusiasts
+Information Security
+Database Administrators
+Drupal Answers
+SharePoint
+User Experience
+Mathematica
+Salesforce
+more (13)  
+Photography
+Science Fiction & Fantasy
+Graphic Design
+Seasoned Advice (cooking)
+Home Improvement
+Personal Finance & Money
+Academia
+more (10)  
+English Language & Usage
+Skeptics
+Mi Yodeya (Judaism)
+Travel
+Christianity
+Arqade (gaming)
+Bicycles
+Role-playing Games
+more (
